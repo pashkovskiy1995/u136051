@@ -1,5 +1,5 @@
-﻿<?php
-namespace MIET\KPI;
+<?php
+//namespace MIET\KPI;
 
 use Bitrix\Main\Entity;
 use Bitrix\Main\Localization\Loc;

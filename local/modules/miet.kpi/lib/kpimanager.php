@@ -1,5 +1,5 @@
-﻿<?php
-namespace MIET\KPI;
+<?php
+//namespace MIET\KPI;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\Entity;
@@ -51,21 +51,7 @@ class KPIManager {
         return $elements;
     }
 
-    public static function GetKPIEmployee($idEmployee)
-    {
-        if (!$idEmployee) {
-            return array();
-        }
-        //Получаем список всех подразделений сотрудника
-        $arDepartmentsUser = UserTable::getList(array(
-            'select' => array(
-                'UF_DEPARTMENT'
-            ),
-            'filter' => array(
-                'ID' => $idEmployee
-            )
-        ))->fetch();
-    }
+
     public static function GetKPIEmployee($idEmployee) {
         if(!$idEmployee) {
             return array();
