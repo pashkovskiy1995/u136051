@@ -3,8 +3,7 @@
 <div class="slide slide-roundabout bg1">
 	<div class="containit ornament-right">
 		<div class="roundaboutshadow">
-			<h1 class="mb4">You can have a Bigger single  Roundabout here.</h1>
-			<p class="mb20">Amazingly this IS compatible with all modern and current Browsers.</p>
+			<h1 class="mb4">Ведущие факультеты МИЭТа.</h1>
 			<!-- roundabout images targets, prettyphoto opens on click of the middle item -->
 
 			<script type="text/javascript" charset="utf-8">
