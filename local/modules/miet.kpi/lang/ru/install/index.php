@@ -1,6 +1,7 @@
-ï»¿<?
-$MESS["miet.kpi_MODULE_NAME"] = "ÐœÐ˜Ð­Ð¢. KPI";
-$MESS["miet.kpi_MODULE_DESC"] = "ÐžÑ†ÐµÐ½ÐºÐ° KPI ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ¾Ð² Ð¸ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ð¹";
-$MESS["miet.kpi_PARTNER_NAME"] = "ÐœÐ˜Ð­Ð¢";
+<?
+$MESS["miet.kpi_MODULE_NAME"] = "ÌÈÝÒ. KPI";
+$MESS["miet.kpi_MODULE_DESC"] = "Îöåíêà KPI ñîòðóäíèêîâ è
+ïîäðàçäåëåíèé";
+$MESS["miet.kpi_PARTNER_NAME"] = "ÌÈÝÒ";
 $MESS["miet.kpi_PARTNER_URI"] = "http://miet.ru/";
 ?>

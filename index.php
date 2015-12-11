@@ -55,4 +55,34 @@ $APPLICATION->SetPageProperty("title", htmlspecialcharsbx(COption::GetOptionStri
             "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
             "PAGER_SHOW_ALL" => "N"
         )
-    );?><br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+    );?><br>
+
+<div class="tmenu">Последние новости</div>
+
+<div class="news" id="nborder">
+<div class="dnews">28.11</div>
+<div class="tnews">Вёрстка главной страницы.</div>
+</div>
+
+<div class="news">
+<div class="dnews">27.11</div>
+<div class="tnews">Создание слайдера факультетов.</div>
+</div>
+
+<div class="news">
+<div class="dnews">27.11</div>
+<div class="tnews">Разработка дизайна для КП Деканат.</div>
+</div>
+
+<div class="news">
+<div class="dnews">27.11</div>
+<div class="tnews">Первый запуск КП Деканат.</div>
+</div>
+
+
+<div id="footer">
+<div id="lfooter">Разработал: Пашковский Дмитрий</div>
+<div id="rfooter">
+
+</div>
+</div><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -105,3 +105,74 @@ background: #fff;
 margin: 0px 20px;
 color: #999;
 }
+
+#bphoto
+{
+background: #eee;
+}
+
+.tmenu
+{
+color: #555;
+padding: 10px;
+font-size: 18px;
+margin-top: 15px;
+background: #efffff;
+font-weight: bold;
+border: solid 1px #ccc;
+}
+
+
+
+.news
+{
+clear: both;
+font-size: 18px;
+padding: 10px 0;
+border-top: solid 2px #ccc;
+}
+
+
+.dnews
+{
+float: left;
+color: #fff;
+width: 40px;
+padding: 5px;
+font-weight: bold;
+background: #4169e0;
+}
+
+.tnews
+{
+float: left;
+padding: 5px;
+margin: 0 0 10px 10px;
+}
+
+#nborder
+{
+border: none;
+}
+
+#footer
+{
+width: 100%;
+height: 22px;
+clear: both;
+padding: 10px;
+background: #eee;
+}
+
+#lfooter
+{
+color: #777;
+float: left;
+font-size: 20px;
+font-weight: bold;
+}
+
+#rfooter
+{
+float: right;
+}

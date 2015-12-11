@@ -1,92 +1,108 @@
-п»ї<?
-/*РџРѕРґР»РєСЋС‡РµРЅРёРµ СЏР·С‹РєРѕРІРѕРіРѕ С„Р°Р№Р»Р° РјРѕРґСѓР»СЏ*/
+<?
+/*Подлкючение языкового файла модуля*/
 IncludeModuleLangFile(__FILE__);
-
-/*РЎРѕР·РґР°РЅРёРµ РєР»Р°СЃСЃР° СЃ РѕРїРёСЃР°РЅРёРµРј Рё РїРѕРІРµРґРµРЅРёРµРј РјРѕРґСѓР»СЏ РІ СЃРёСЃС‚РµРјРµ
- *РРјСЏ РєР»Р°СЃСЃР° РґРѕР»Р¶РЅРѕ СЃРѕРІРїР°РґР°С‚СЊ СЃ ID РјРѕРґСѓР»СЏ, РІРјРµСЃС‚Рѕ С‚РѕС‡РєРё РјРµР¶РґСѓ РёРјРµРЅРµРј РїР°СЂРЅРµСЂР° Рё РёРјРµРЅРµРј РјРѕРґСѓР»СЏ Р·РЅР°Рє РїРѕРґС‡РµСЂРєРёРІР°РЅРёСЏ
- *РљР»Р°СЃСЃ РјРѕРґСѓР»СЏ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РЅР°СЃР»РµРґРЅРёРєРѕРј СЃРёСЃС‚РµРјРЅРѕРіРѕ РєР»Р°СЃСЃР° РјРѕРґСѓР»РµР№ Р‘РёС‚СЂРёРєСЃ CModule*/
+/*Создание класса с описанием и поведением модуля в системе
+*Имя класса должно совпадать с ID модуля, вместо точки между именем
+парнера и именем модуля знак подчеркивания
+*Класс модуля должен быть наследником системного класса модулей
+Битрикс CModule*/
 Class miet_kpi extends CModule {
-
-    /*РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ СЃРІРѕР№СЃС‚РІР° РѕР±СЉРµРєС‚Р° РјРѕРґСѓР»СЏ*/
+    /*Обязательные свойства объекта модуля*/
     const MODULE_ID = "miet.kpi";
     var $MODULE_ID = "miet.kpi";
     var $MODULE_VERSION;
     var $MODULE_VERSION_DATE;
     var $MODULE_NAME;
     var $MODULE_DESCRIPTION;
-
-    /*РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°*/
-    /*РћР‘РЇР—РђРўР•Р›Р¬РќР«Р™ Р”Р›РЇ Р Р•РђР›РР—РђР¦РР РњР•РўРћР”*/
+    /*Конструктор класса*/
+    /*ОБЯЗАТЕЛЬНЫЙ ДЛЯ РЕАЛИЗАЦИИ МЕТОД*/
     function __construct()
     {
         $arModuleVersion = array();
         include(__DIR__ . "/version.php");
         $this->MODULE_VERSION = $arModuleVersion["VERSION"];
-        $this->MODULE_VERSION_DATE = $arModuleVersion["VERSION_DATE"];
+        $this->MODULE_VERSION_DATE =
+            $arModuleVersion["VERSION_DATE"];
         $this->MODULE_NAME = GetMessage("miet.kpi_MODULE_NAME");
-        $this->MODULE_DESCRIPTION = GetMessage("miet.kpi_MODULE_DESC");
-
+        $this->MODULE_DESCRIPTION =
+            GetMessage("miet.kpi_MODULE_DESC");
         $this->PARTNER_NAME = GetMessage("miet.kpi_PARTNER_NAME");
         $this->PARTNER_URI = GetMessage("miet.kpi_PARTNER_URI");
     }
 
-    /*РњРµС‚РѕРґ СЂРµРіРёСЃС‚СЂР°С†РёРё СЃРѕР±С‹С‚РёР№ РјРѕРґСѓР»СЏ Рё РёС… РѕР±СЂР°Р±РѕС‚С‡РёРєРѕРІ*/
+    /*Метод регистрации событий модуля и их обработчиков*/
     function InstallEvents()
     {
-        /* РџСЂРёРјРµСЂ
+        /* Пример
         $em = \Bitrix\Main\EventManager::getInstance();
-      $em->registerEventHandler('sale', 'OnBasketAdd', self::MODULE_ID,  '\CompanyNamespace\Promotions\Connector', 'OnBasketAdd');
-      $em->registerEventHandler('sale', 'OnBasketUpdate', self::MODULE_ID,  '\CompanyNamespace\Promotions\Connector', 'OnBasketUpdate');
+        $em->registerEventHandler('sale', 'OnBasketAdd',
+       self::MODULE_ID, '\CompanyNamespace\Promotions\Connector',
+       'OnBasketAdd');
+        $em->registerEventHandler('sale', 'OnBasketUpdate',
+       self::MODULE_ID, '\CompanyNamespace\Promotions\Connector',
+       'OnBasketUpdate');
         */
         return true;
     }
-
-    /*РњРµС‚РѕРґ СѓРґР°Р»РµРЅРёСЏ СЃРѕР±С‹С‚РёР№ РјРѕРґСѓР»СЏ Рё РёС… РѕР±СЂР°Р±РѕС‚С‡РёРєРѕРІ*/
+    /*Метод удаления событий модуля и их обработчиков*/
     function UnInstallEvents()
     {
-        /* РџСЂРёРјРµСЂ
+        /* Пример
         $em = \Bitrix\Main\EventManager::getInstance();
-      $em->unRegisterEventHandler('sale', 'OnBasketAdd', self::MODULE_ID,  '\CompanyNamespace\Promotions\Connector', 'OnBasketAdd');
-      $em->unRegisterEventHandler('sale', 'OnBasketUpdate', self::MODULE_ID,  '\CompanyNamespace\Promotions\Connector', 'OnBasketUpdate');
+        $em->unRegisterEventHandler('sale', 'OnBasketAdd',
+       self::MODULE_ID, '\CompanyNamespace\Promotions\Connector',
+       'OnBasketAdd');
+        $em->unRegisterEventHandler('sale', 'OnBasketUpdate',
+       self::MODULE_ID, '\CompanyNamespace\Promotions\Connector',
+       'OnBasketUpdate');
         */
         return true;
     }
-
-    /*РњРµС‚РѕРґ СѓСЃС‚Р°РЅРѕРІРєРё (РєРѕРїРёСЂРѕРІР°РЅРёСЏ С„Р°Р№Р»РѕРІ РІ СЏРґСЂРѕ Р‘РёС‚СЂРёРєСЃР°) С„Р°Р№Р»РѕРІ РјРѕРґСѓР»СЏ*/
+    /*Метод установки (копирования файлов в ядро Битрикса) файлов
+   модуля*/
     function InstallFiles($arParams = array())
     {
-        /*Р”РѕР±Р°РІР»СЏРµРј Р°РґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅС‹Рµ СЃРєСЂРёРїС‚С‹*/
-        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/" . self::MODULE_ID . "/admin"))
+        /*Добавляем административные скрипты*/
+        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/"
+            . self::MODULE_ID . "/admin"))
         {
             if ($dir = opendir($p))
             {
                 while (false !== $item = readdir($dir))
                 {
-                    if ($item == ".." || $item == "." || $item == "menu.php")
+                    if ($item == ".." || $item == "." || $item ==
+                        "menu.php")
                     {
                         continue;
                     }
-                    file_put_contents($file = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/" . self::MODULE_ID . "_" . $item, '<' . '? require($_SERVER["DOCUMENT_ROOT"]."/local/modules/' . self::MODULE_ID . '/admin/' . $item . '");?' . '>');
+                    file_put_contents($file =
+                        $_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/" . self::MODULE_ID . "_"
+                        . $item, '<' . '? require($_SERVER["DOCUMENT_ROOT"]."/local/modules/'
+                        . self::MODULE_ID . '/admin/' . $item . '");?' . '>');
                 }
                 closedir($dir);
             }
         }
-
-        /*Р”РѕР±Р°РІР»СЏРµРј С„Р°Р№Р»С‹ JS*/
-        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/" . self::MODULE_ID . "/install/js"))
+        /*Добавляем файлы JS*/
+        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/"
+            . self::MODULE_ID . "/install/js"))
         {
-            CheckDirPath($_SERVER["DOCUMENT_ROOT"] . "/bitrix/js/" . self::MODULE_ID);
-            CopyDirFiles($p, $_SERVER["DOCUMENT_ROOT"] . "/bitrix/js/" . self::MODULE_ID, true, true);
-        }
+            CheckDirPath($_SERVER["DOCUMENT_ROOT"] . "/bitrix/js/" .
 
-        /*Р”РѕР±Р°РІР»СЏРµРј С„Р°Р№Р»С‹ CSS*/
-        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/" . self::MODULE_ID . "/install/themes"))
+self::MODULE_ID);
+ CopyDirFiles($p, $_SERVER["DOCUMENT_ROOT"] .
+     "/bitrix/js/" . self::MODULE_ID, true, true);
+ }
+        /*Добавляем файлы CSS*/
+        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/"
+            . self::MODULE_ID . "/install/themes"))
         {
-            CopyDirFiles($p, $_SERVER["DOCUMENT_ROOT"]."/bitrix/themes", true, true);
+            CopyDirFiles($p,
+                $_SERVER["DOCUMENT_ROOT"]."/bitrix/themes", true, true);
         }
-
-        /*Р”РѕР±Р°РІР»СЏРµРј РїР°РїРєРё СЃ РєРѕРјРїРѕРЅРµРЅС‚Р°РјРё РјРѕРґСѓР»СЏ*/
-        if (is_dir($p = $_SERVER['DOCUMENT_ROOT'] . '/local/modules/' . self::MODULE_ID . '/install/components'))
+        /*Добавляем папки с компонентами модуля*/
+        if (is_dir($p = $_SERVER['DOCUMENT_ROOT'] . '/local/modules/'
+            . self::MODULE_ID . '/install/components'))
         {
             if ($dir = opendir($p))
             {
@@ -96,20 +112,22 @@ Class miet_kpi extends CModule {
                     {
                         continue;
                     }
-                    CopyDirFiles($p . '/' . $item, $_SERVER['DOCUMENT_ROOT'] . '/bitrix/components/' . $item, $ReWrite = true, $Recursive = true);
+                    CopyDirFiles($p . '/' . $item,
+                        $_SERVER['DOCUMENT_ROOT'] . '/bitrix/components/' . $item, $ReWrite =
+                            true, $Recursive = true);
                 }
                 closedir($dir);
             }
         }
-
         return true;
     }
-
-    /*РњРµС‚РѕРґ СѓРґР°Р»РµРЅРёСЏ (СѓРґР°Р»РµРЅРёСЏ С„Р°Р№Р»РѕРІ РёР· СЏРґСЂР° Р‘РёС‚СЂРёРєСЃР°) С„Р°Р№Р»РѕРІ РјРѕРґСѓР»СЏ*/
+    /*Метод удаления (удаления файлов из ядра Битрикса) файлов
+   модуля*/
     function UnInstallFiles()
     {
-        /*Р”РѕР±Р°РІР»СЏРµРј Р°РґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅС‹Рµ СЃРєСЂРёРїС‚С‹*/
-        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/" . self::MODULE_ID . "/admin"))
+        /*Добавляем административные скрипты*/
+        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/"
+            . self::MODULE_ID . "/admin"))
         {
             if ($dir = opendir($p))
             {
@@ -119,85 +137,80 @@ Class miet_kpi extends CModule {
                     {
                         continue;
                     }
-                    unlink($_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/" . self::MODULE_ID . "_" . $item);
+                    unlink($_SERVER["DOCUMENT_ROOT"] .
+                        "/bitrix/admin/" . self::MODULE_ID . "_" . $item);
                 }
                 closedir($dir);
             }
         }
+        /*Удаляем файлы JS*/
+        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/js/" .
 
-        /*РЈРґР°Р»СЏРµРј С„Р°Р№Р»С‹ JS*/
-        if (is_dir($p = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/js/" . self::MODULE_ID))
-        {
-            DeleteDirFilesEx($p);
-        }
+self::MODULE_ID))
+ {
+     DeleteDirFilesEx($p);
+ }
+ /*Удаляем файлы CSS*/
 
-        /*РЈРґР°Р»СЏРµРј С„Р°Р№Р»С‹ CSS*/
-        DeleteDirFiles($_SERVER["DOCUMENT_ROOT"]."/local/modules/".$this->MODULE_ID."/install/themes/.default/", $_SERVER["DOCUMENT_ROOT"]."/bitrix/themes/.default");
-
-        /*РЈРґР°Р»СЏРµРј РїР°РїРєРё СЃ РєРѕРјРїРѕРЅРµРЅС‚Р°РјРё РјРѕРґСѓР»СЏ*/
-        if (is_dir($p = $_SERVER['DOCUMENT_ROOT'] . '/local/modules/' . self::MODULE_ID . '/install/components'))
-        {
-            if ($dir = opendir($p))
-            {
-                while (false !== $item = readdir($dir))
-                {
-                    if ($item == '..' || $item == '.' || !is_dir($p0 = $p . '/' . $item))
-                    {
-                        continue;
-                    }
-
-                    $dir0 = opendir($p0);
-                    while (false !== $item0 = readdir($dir0))
-                    {
-                        if ($item0 == '..' || $item0 == '.')
-                        {
-                            continue;
-                        }
-                        DeleteDirFilesEx($_SERVER['DOCUMENT_ROOT'] . '/bitrix/components/' . $item . '/' . $item0);
-                    }
-                    closedir($dir0);
-                }
-                closedir($dir);
-            }
-        }
-
-        return true;
-    }
-
-    /*Р—Р°РїСѓСЃРєР°РµС‚СЃСЏ РїСЂРё РЅР°Р¶Р°С‚РёРё РєРЅРѕРїРєРё РЈРґР°Р»РёС‚СЊ РЅР° СЃС‚СЂР°РЅРёС†Рµ РњРѕРґСѓР»Рё Р°РґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅРѕРіРѕ СЂР°Р·РґРµР»Р°, РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚ РґРµРёРЅСЃС‚Р°Р»Р»СЏС†РёСЋ РјРѕРґСѓР»СЏ*/
-    /*РћР‘РЇР—РђРўР•Р›Р¬РќР«Р™ Р”Р›РЇ Р Р•РђР›РР—РђР¦РР РњР•РўРћР”*/
+DeleteDirFiles($_SERVER["DOCUMENT_ROOT"]."/local/modules/".$this->MODULE_ID."/install/themes/.default/", $_SERVER["DOCUMENT_ROOT"]."/bitrix/themes/.default");
+ /*Удаляем папки с компонентами модуля*/
+ if (is_dir($p = $_SERVER['DOCUMENT_ROOT'] . '/local/modules/'
+     . self::MODULE_ID . '/install/components'))
+ {
+     if ($dir = opendir($p))
+     {
+         while (false !== $item = readdir($dir))
+         {
+             if ($item == '..' || $item == '.' || !is_dir($p0
+                     = $p . '/' . $item))
+             {
+                 continue;
+             }
+             $dir0 = opendir($p0);
+             while (false !== $item0 = readdir($dir0))
+             {
+                 if ($item0 == '..' || $item0 == '.')
+                 {
+                     continue;
+                 }
+                 DeleteDirFilesEx($_SERVER['DOCUMENT_ROOT'] .
+                     '/bitrix/components/' . $item . '/' . $item0);
+             }
+             closedir($dir0);
+         }
+         closedir($dir);
+     }
+ }
+ return true;
+ }
+    /*Запускается при нажатии кнопки Удалить на странице Модули
+   административного раздела, осуществляет деинсталляцию модуля*/
+    /*ОБЯЗАТЕЛЬНЫЙ ДЛЯ РЕАЛИЗАЦИИ МЕТОД*/
     function DoInstall()
     {
         global $APPLICATION;
-
         $this->InstallFiles();
         $this->InstallDB();
         $this->InstallEvents();
-
         RegisterModule(self::MODULE_ID);
     }
-
-    /*РњРµС‚РѕРґ Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ РїСЂРё РЅР°Р¶Р°С‚РёРё РєРЅРѕРїРєРё РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР° СЃС‚СЂР°РЅРёС†Рµ РњРѕРґСѓР»Рё Р°РґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅРѕРіРѕ СЂР°Р·РґРµР»Р°, РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚ РёРЅСЃС‚Р°Р»Р»СЏС†РёСЋ РјРѕРґСѓР»СЏ*/
-    /*РћР‘РЇР—РђРўР•Р›Р¬РќР«Р™ Р”Р›РЇ Р Р•РђР›РР—РђР¦РР РњР•РўРћР”*/
+    /*Метод запускается при нажатии кнопки Установить на странице
+   Модули административного раздела, осуществляет инсталляцию модуля*/
+    /*ОБЯЗАТЕЛЬНЫЙ ДЛЯ РЕАЛИЗАЦИИ МЕТОД*/
     function DoUninstall()
     {
         global $APPLICATION;
-
         UnRegisterModule(self::MODULE_ID);
-
         $this->UnInstallEvents();
         $this->UnInstallDB();
         $this->UnInstallFiles();
     }
-
-    /*РњРµС‚РѕРґ Р·Р°РїСѓСЃРєР° С„Р°Р№Р»РѕРІ SQL, РєРѕС‚РѕСЂС‹Рµ СЃРѕРґРµСЂР¶Р°С‚ Р·Р°РїСЂРѕСЃС‹ РЅР° СЃРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС† РІ Р‘Р” РґР»СЏ СЂР°Р±РѕС‚С‹ РјРѕРґСѓР»СЏ*/
+    /*Метод запуска файлов SQL, которые содержат запросы на создание
+   таблиц в БД для работы модуля*/
     function InstallDB()
     {
         global $DB, $DBType;
-
         $DB->RunSQLBatch($_SERVER["DOCUMENT_ROOT"]."/local/modules/".self::MODULE_ID."/install/db/".strtolower($DBType)."/install.sql");
-
-        return true;
-    }
+ return true;
+ }
 }
-?>

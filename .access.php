@@ -1,4 +1,5 @@
 <?
+$PERM["registration.php"]["*"]="D";
 $PERM["upload"]["*"]="R";
 $PERM["/"]["12"]="T_10";
 $PERM["/"]["11"]="R";

@@ -1,15 +1,11 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 ?>
+ddddddddddddddddddddddddddddddddddddddddddddddd
 <?
 ShowMessage($arParams["~AUTH_RESULT"]);
 ShowMessage($arResult['ERROR_MESSAGE']);
 ?>
-
-
-<div id="title">
-	<h1>2222222222222222Главная страница</h1>
-</div
 
 <div class="bx-auth">
 <?if($arResult["AUTH_SERVICES"]):?>

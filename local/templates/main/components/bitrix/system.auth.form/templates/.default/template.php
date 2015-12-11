@@ -1,6 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-
-
+ddddddddddddddddddddddddddddddddddddddddddd
 <div class="bx-system-auth-form">
 
 <?
@@ -10,10 +9,6 @@ if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 
 <?if($arResult["FORM_TYPE"] == "login"):?>
 
-
-	<div id="title">
-		<h1>2222222222222222Главная страница</h1>
-	</div>
 <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
 <?if($arResult["BACKURL"] <> ''):?>
 	<input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
