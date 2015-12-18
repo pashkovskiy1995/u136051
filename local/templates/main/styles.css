@@ -1,5 +1,6 @@
-body
+html, body
 {
+height: 100%;
 background: #fff;
 font-size: 14px;
 padding: 0px;
@@ -23,6 +24,7 @@ background: #eee;
 float: left;
 }
 
+
 #page
 {
 background: #eee;
@@ -34,9 +36,18 @@ color: #999;
 
 
 /* MENU */
-#menu ul
+#menu
 {
 float: left;
+margin: 0px;
+margin-left: -40px;
+position: relative;
+}
+
+#menu ul
+{
+
+margin: 0px;
 }
 
 #menu li
@@ -62,8 +73,8 @@ color: #fff;
 /* BUTTON */
 #button
 {
-margin-top: 19px;
 float: right;
+margin-top: 19px;
 }
 
 #button a
@@ -101,6 +112,11 @@ margin-top: 15px;
 
 #main
 {
+position: relative;
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 0 -40px 0;
 background: #fff;
 margin: 0px 20px;
 color: #999;
@@ -150,21 +166,50 @@ padding: 5px;
 margin: 0 0 10px 10px;
 }
 
+
+.red{color: #009900;}
+.green{color: #990000;}
+.blue{color: #000099;}
+
 #nborder
 {
 border: none;
 }
 
-#footer
-{
-width: 100%;
-height: 22px;
+.hFooter {
 clear: both;
-padding: 10px;
-background: #eee;
+height: 40px;
 }
 
-#lfooter
+
+.admrnu ul {
+float: left;
+margin: 0;
+margin-top: -3px;
+padding: 0px;
+}
+
+.admenu ul li {
+display: inline;
+background: #bbb;
+margin-right: 5px;
+padding: 5px;
+color: #fff;
+}
+
+#footer
+{
+width: auto;
+clear: both;
+background: #eee;
+bottom: 0px;
+padding: 20px;
+margin-top: 15px;
+border-top: solid 1px #777;
+height: 25px;
+}
+
+#lfooter, #rfooter
 {
 color: #777;
 float: left;
@@ -174,5 +219,21 @@ font-weight: bold;
 
 #rfooter
 {
+margin-right: 10px;
 float: right;
+}
+
+
+
+.social ul {
+float: right;
+margin: 0;
+margin-top: -3px;
+padding: 0px;
+}
+
+.social ul li {
+display: inline;
+margin-right: 5px;
+padding: 0px;
 }

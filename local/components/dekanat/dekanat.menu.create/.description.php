@@ -1,24 +1,24 @@
-<?
+﻿<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die ();
 $arComponentDescription = array
     (
         "NAME" => GetMessage("NAME_COMPONENT"),
         "DESCRIPTION" => GetMessage("DESCRIPTION_COMPONENT"),
         "SORT" => 20 ,
-        "CACHE_PATH" => "Y" ,
         "PATH" => array
             (
-                "ID" => "content",
+                "ID" => "dekanat",
                 "NAME" => GetMessage("NAME_TOP"),
                 "CHILD" => array
                     (
-                    "ID"=> "MENU",
-                    "NAME" => GetMessage("NAME_KPI"),
+                    "ID"=> "newway",
+                    "NAME" => GetMessage("TOP_MENU"),
                     "SORT" => 10,"CHILD" =>
                             array
                             (
-                                "ID" => "KPIValue",
+                                "ID" => "DekanatNewWay",
                             )
                     ),
             ),
     );
+?>

@@ -1,6 +1,6 @@
 <?
-$MESS['NAME_TOP'] = "Content";
-$MESS['NAME_DEK'] = "Dekanat";
-$MESS['NAME_TOP_MENU'] = "Top Menu";
-$MESS['DESCRIPTION_COMPONENT'] = "Top Menu";
+$MESS['NAME_TOP'] = "Dekanat";
+$MESS['NAME_DEK'] = "Create Way";
+$MESS['NAME_COMPONENT'] = "Create Way";
+$MESS['DESCRIPTION_COMPONENT'] = "Component for create way";
 ?>

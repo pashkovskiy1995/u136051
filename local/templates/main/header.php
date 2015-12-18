@@ -2,6 +2,7 @@
 <?if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();?> <?IncludeTemplateLangFile(__FILE__);?>
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="<?=LANGUAGE_ID?>">
 <head profile="http://gmpg.org/xfn/11">
@@ -89,30 +90,43 @@
 <div id="header">
 
 
-<div id="logo">
+
+<? if($page !== 'home') echo '<a href="//localhost:8082">'; /*$href = " onclick=\"location.href='http://localhost:8082'\";"; */?>
+<div id="logo"<?=$href?>>
 <img src="//localhost:8082/local/templates/main/images/logo.png">
+<? if($page !== 'home') echo '</a>'; ?>
+</div>
+
+    <?if($USER->IsAdmin()) { ?>
+        <div id="menu">
+            <ul>
+                <li><a href="">Добавить направление</a></li>
+                <li><a href="">Добавить группу</a></li>
+                <li><a href="">Добавить дисциплину</a></li>
+                <li><a href="">Список студентов</a></li>
+            </ul>
+        </div>
+        <?
+    }
+    else
+    {
+        $APPLICATION->IncludeComponent(
+"dekanat:dekanat.menu.general",
+"",
+Array(
+"COMPONENT_TEMPLATE" => ".default"
+)
+);?>
+    <? } ?>
+
+<? if($USER->IsAuthorized() == false) { ?>
+<div id="button"><a href="//localhost:8082/login">Вход</a></div>
+<div id="button"><a href="//localhost:8082/registration">Регистрация</a></div>
+<? }else{ ?>
+	<div id="button"><a href="//localhost:8082?logout=yes">Выход</a></div>
+<? } ?>
 </div>
 
 
-<div id="menu">
-<li><a href="">Обучение</a></li>
-<li><a href="">Учебный план</a></li>
-<li><a href="">Техподдержка</a></li>
-<li><a href="">Помощь</a></li>
-</ul>
-</div>
 
-
-
-
-<div id="button"><a href="">Вход</a></div>
-<div id="button"><a href="">Регистрация</a></div>
-</div>
-<!-- END -->
-
-
-
-
-
-<!-- HEADER -->
 <div id="main">

@@ -46,6 +46,7 @@ if ($_REQUEST['saveKPI']) {
 ###Получение данных изБД
 ###
 
+
 if ($this ->StartResultCache(false, array (($arParams["CACHE_GROUPS"]  ===  "N" ? false : $USER ->GetGroups()), $bUSER_HAVE_ACCESS)))
 {
 ###Формирование списка отчетныхпериодов (месяц, год)###
@@ -62,6 +63,7 @@ for ($i = 1; $i <= 12; $i++)
 ###Получение списка показателей KPI для сотрудника###
 $arResult['ITEMS'] = KPI\KPIManager:: GetKPIEmployee ($arParams [ "USER_ID" ]);
 
+
 ###Кэширование значения элементов массива $arResult###
 $this ->SetResultCacheKeys(
     array
@@ -70,12 +72,14 @@ $this ->SetResultCacheKeys(
 ###Подключение шаблона компонента###
 $this ->IncludeComponentTemplate();
 ###
+
 }
+/*
 ###Вывод элементов из кэша###
 if (isset($arResult["ITEM"]))
 {
     $this ->SetTemplateCachedData();
     return $arResult["ITEM"];
 }
-
+*/
 ###

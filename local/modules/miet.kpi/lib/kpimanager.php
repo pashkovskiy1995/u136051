@@ -103,6 +103,88 @@ class KPIManager {
 
     }
 
+	
+	
+	
+	/*
+	    public static function UpdateKPIEmployee($idEmployee, $period,
+                                          $arKPIValues) {
+        if(!$idEmployee || !is_array($arKPIValues) ||
+            !count($arKPIValues)) {
+            return array();
+        }
+        global $USER;
+        //Получаем объект подключения к БД
+        $db = Application::getConnection();
+        //Начинаем транзакцию
+        $db->startTransaction();
+
+        foreach($arKPIValues as $KPI => $KPIValue) {
+            $arValue = array(
+                'UF_VALUE' => $KPIValue,
+                'UF_KPI' => $KPI,
+                'UF_EMPLOYEE' => $idEmployee,
+                'UF_CREATED_BY' => $USER->GetID(),
+                'UF_CREATED' => new
+                \Bitrix\Main\Type\DateTime(date('d.m.Y') . ' 00:00:00'),
+                'UF_PERIOD' => new
+                \Bitrix\Main\Type\DateTime($period. ' 00:00:00')
+            );
+            $result = KPIEmployeeTable::Update($arValue);
+            if (!$result->isSuccess()) {
+                $db->rollbackTransaction();
+                return false;
+            }
+ }
+        if ($result->isSuccess()) {
+            $db->commitTransaction();
+            return true;
+        }
+
+    }
+	
+	*/
+	
+	public static function MenuValues($is_user)
+    {
+		//Нужный для нас запрос в БД
+        $query = DekanatMenuTable::getList(array(
+            'select' => array(
+                'ID', 'UF_VALUE', 'UF_URL'
+            ),
+            'filter' => array(
+			    'LOGIC' => 'OR',
+				array('UF_ACCESS' => $access),
+                array('UF_ACCESS' => 1)
+            )
+        ));
+		
+		//Первая итерация
+		$i=0;
+		
+		//Создаём массив для вывода данных из БД
+		$res = array();
+		
+		//Получаем значения и формируем массив значений
+		while($req = $query->Fetch())
+		{
+		//Получаем массив значений из БД
+		$req[] = $query;
+		
+		//Записываем значения
+		$res[$i]["ID"] = $req["ID"];
+		$res[$i]["UF_VALUE"] = $req["UF_VALUE"];
+		$res[$i]["UF_URL"] = $req["UF_URL"];
+		
+		//Следующая итерация
+		$i++;
+		}
+		return $res;
+    }
+	
+
+}
+	
     public static function GetKPIEmployeeValue($idKPI, $idEmployee, $period)
     {
         if (!$idKPI || !$idEmployee || !$period) {
